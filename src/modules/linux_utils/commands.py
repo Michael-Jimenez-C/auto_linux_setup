@@ -81,8 +81,26 @@ class linux:
     @staticmethod
     def copy(source, destination):
         info(f"Copiando {source} a {destination}")
-        p = subprocess.run(['cp', '-r', source, destination], capture_output=True)
+        p = subprocess.run(['sudo', 'cp', '-r', source, destination], capture_output=True)
         if p.returncode != 0:
             error(f"Error copiando {source} a {destination}")
             return
         success(f"Se ha copiado {source} a {destination}")
+    
+    @staticmethod
+    def chmod(path, mode):
+        info(f"Cambiando permisos de {path} a {mode}")
+        p = subprocess.run(['sudo','chmod', mode, path], capture_output=True)
+        if p.returncode != 0:
+            error(f"Error cambiando permisos de {path} a {mode}")
+            return
+        success(f"Se ha cambiado permisos de {path} a {mode}")
+
+    @staticmethod
+    def wget(url, destination):
+        info(f"Descargando {url} como {destination}")
+        p = subprocess.run(['wget', url, '-O', destination], capture_output=True)
+        if p.returncode != 0:
+            error(f"Error descargando {url} a {destination}")
+            return
+        success(f"Se ha descargado {url} a {destination}")
