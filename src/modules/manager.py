@@ -66,22 +66,22 @@ class Manager:
     def __configs(self):
         info("Configurando el entorno")
         if self.config.desktop == "bspwm":
-            for i in ['bspwm','picom','polybar', 'rofi', 'sxhkd','sxhkd']:
-                linux.copy(f"dotfiles/{i}", f"{HOME}/.local/share")
+            for i in ['bspwm','picom','polybar', 'rofi', 'sxhkd']:
+                linux.copy(f"dotfiles/{i}", f"{HOME}/.config")
             linux.chmod(f"{HOME}/.config/rofi/powermenu/powermenu.sh", "774")
             linux.chmod(f"{HOME}/.config/polybar/launch.sh", "774")
-
+            tmp_= open(f"{HOME}/.config/sxhkd/sxhkdrc", "r").read()
             with open(f"{HOME}/.config/sxhkd/sxhkdrc", "w") as file:
-                file.write(file.read().replace("gnome-terminal", self.config.terminal))
+                file.write(tmp_.replace("gnome-terminal", self.config.terminal))
                 file.close()
 
         if self.config.terminal == "gnome-terminal":
             os.system(f"dconf load /org/gnome/terminal/ < {PWD}/dotfiles/terminal/gnome-terminal")
         if self.config.terminal == "kitty":
             os.system(f'git clone https://github.com/d3vjh/Dotfiles.git d3vjh_df')
-            linux.copy('d3vjh_df/kitty', '{HOME}/.config/')
+            linux.copy('d3vjh_df/kitty', f'{HOME}/.config/')
 
-        linux.copy(f"background/fondo.png", f"{HOME}/.local/share/fondos")
+        linux.copy("background/fondo.png", f"{HOME}/.local/share/fondos")
         linux.copy("dotfiles/.zshrc", f"{HOME}/.zshrc")
 
 

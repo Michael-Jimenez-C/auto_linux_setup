@@ -1,7 +1,7 @@
 import subprocess
 import os
 from modules.print_mod import info, error, success
-from modules.commonconstants import HOME
+from modules.commonconstants import HOME, USER
 
 class Install:
     @staticmethod
@@ -12,9 +12,9 @@ class Install:
     def install(packages: list):
         info('Preparandose para instalar los siguientes paquetes: '+' '.join(packages))
         for package in packages:
-            if os.path.exists(f"compiled/deb/{package}.deb"):
-                info("Se encontró un paquete compilado en compiled/deb, se instalará desde ahí")
-                package = f"./compiled/deb/{package}.deb"
+            if os.path.exists(f"compiled/{package}.deb"):
+                info("Se encontró un paquete compilado en compiled, se instalará desde ahí")
+                package = f"./compiled/{package}.deb"
             info("Instalando " + package)
             p = subprocess.run(['sudo', 'apt', 'install', '--ignore-missing', '-y', package], capture_output=True)
             if p.returncode != 0:
@@ -73,7 +73,7 @@ class Install:
                 error(f"Error instalando {package} con homebrew")
                 continue
             success(f"Se ha instalado {package} con homebrew")
-    def flatpak(self, packages: list):
+    def flatpak(packages: list):
         pass
 
 
@@ -82,6 +82,7 @@ class linux:
     def copy(source, destination):
         info(f"Copiando {source} a {destination}")
         p = subprocess.run(['sudo', 'cp', '-r', source, destination], capture_output=True)
+        subprocess.run(['sudo', 'chown', '-R', f'{USER}:{USER}', destination], capture_output=True)
         if p.returncode != 0:
             error(f"Error copiando {source} a {destination}")
             return

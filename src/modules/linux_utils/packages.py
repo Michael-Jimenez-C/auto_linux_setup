@@ -13,7 +13,7 @@ packages = [
     "unzip",
     "bat",
     "jq",
-    "build-essential"
+    "build-essential",
     "ffmpeg",
     "7zip",
     "poppler-utils",

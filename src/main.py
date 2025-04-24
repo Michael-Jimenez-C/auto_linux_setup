@@ -96,12 +96,12 @@ class Menu:
         self.desktop()
         self.terminal()
         self.rust()
-        if self.rust:
+        if self.config.rust or self.config.rustAlreadyInstalled:
             self.yazi()
             self.wallust()
             self.crate_io_packages()
         self.homebrew()
-        if self.homebrew:
+        if self.config.homebrew:
             self.homebrew_packages()
         self.additional_packages()
         self.pipx_packages()

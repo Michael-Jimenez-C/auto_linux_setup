@@ -17,5 +17,5 @@ def installNvim():
     os.system("tar -xzvf nvim-linux-x86_64.tar.gz -C nvim")
     os.system("rm nvim-linux-x86_64.tar.gz")
     os.system(f"ln -s {HOME}/.local/nvim/nvim-linux-x86_64/bin/nvim {HOME}/.local/bin/nvim")
-    os.system(PWD)
+    os.chdir(PWD)
     os.system("git clone https://github.com/NvChad/starter ~/.config/nvim")
