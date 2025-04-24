@@ -1,0 +1,80 @@
+* {
+  bg0: #0D0D0DAF;
+  fg0: #7773F0;
+  transparent: #00000000;
+
+  background-color: @transparent; 
+  foreground: @fg0;
+  border-radius: 20px;
+}
+
+configuration {
+  modes: [ combi ];
+  combi-modes: [ window, drun, run ];
+}
+
+mainbox{
+  spacing:2em;
+}
+
+window {
+  background-color: @bg0;
+  color: white;
+  padding: 1em;
+  width: var( width, 90%);
+  height: var(height, 90%);
+  border: none;
+}
+
+inputbar {
+  border:1px;
+  border-color: gray;
+  color:white;
+  padding: 1em 0em;
+  border-radius:50px;
+  children: [icon-search, entry];
+}
+
+
+listview {
+  columns:6;
+  fixed-columns:true;
+  background-color: @transparent;
+  border:none;
+}
+
+element {
+  orientation: vertical;
+  children: [ element-icon, element-text ];
+  spacing: 5px;
+}
+
+element-icon {
+    size: 5em;
+}
+
+element-text {
+  vertical-align: 0.5;
+  horizontal-align:0.5;
+    
+}
+
+element, element-text, element-icon {
+  cursor: pointer;
+}
+
+entry {
+  placeholder-color: #aaaaaa;
+}
+
+
+
+
+element selected.normal {
+    background-color: @fg0;
+}
+
+element normal normal, element alternate normal{
+  background-color: @transparent;
+  color:white;
+}
