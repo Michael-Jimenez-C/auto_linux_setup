@@ -4,20 +4,22 @@
 
 # terminal emulator
 super + Return
-	urxvt
+	gnome-terminal
+
+ctrl + alt + t
+	gnome-terminal
 
 # program launcher
 super + @space
+	rofi -combi-modi drun,window,ssh --config $HOME/.config/rofi/config.rasi -show
+
+super + d
 	rofi -combi-modi drun,window,ssh --config $HOME/.config/rofi/config.rasi -show
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
-ctrl + alt + t
-	gnome-terminal
-
-#
 # bspwm hotkeys
 #
 

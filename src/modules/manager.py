@@ -31,6 +31,10 @@ class Manager:
                 Install.cargo_install(['yazi-fm', 'yazi-cli'])
             if self.config.wallust:
                 Install.cargo_install(['wallust'])
+                if 'wallust' not in open(f'{HOME}/.zshrc').read():
+                    with open(f'{HOME}/.zshrc','a')as file:
+                        file.write('\n\n')
+                        file.write(f'wallust run {HOME}/.local/share/fondos/fondo.png >/dev/null &')
             Install.cargo_install(self.config.crateIoPackages)
 
         if self.config.homebrew:                
