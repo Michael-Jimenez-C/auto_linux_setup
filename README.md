@@ -14,6 +14,7 @@ En la carpeta compiled encontrará compilaciones recientes de polybar y picom, e
 ```
 cd /tmp/
 git clone https://github.com/Michael-Jimenez-C/auto_linux_setup.git
+cd auto_linux_setup
 chmod +x install.sh
 ./install.sh
 ```
