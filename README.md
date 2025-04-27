@@ -24,3 +24,5 @@ chmod +x install.sh
 Recomendaría instalar rust para tener wallust y yazi, utilidades que le dan un aspecto muy agradable al entorno.
 
 Para cambiar el fondo de pantalla simplemente puede remplazar la imagen en ``src/background`` antes de instalar o en ``$HOME/.local/share/fondos`` despues de instalar.
+
+Si estás experimentando problemas con distros como kali, relacionado a ventanas titilantes modifica la configuración de bspwm, en ``$HOME/.local/share/fondos`` y remplaza la linea donde aparece picom por ``picom --backend xrender --no-use-damage``
