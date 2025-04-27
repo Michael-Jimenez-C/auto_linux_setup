@@ -58,8 +58,9 @@ class Install:
     @staticmethod
     def homebrew():
         info("Instalando homebrew")
-        p = subprocess.run(['/bin/bash', '-c', '"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'], capture_output=True, shell=True)
-        if p.returncode != 0:
+        p = os.system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
+        os.system('export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"')
+        if p != 0:
             error("Error instalando homebrew")
             return
         success("Homebrew instalado correctamente")

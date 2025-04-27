@@ -17,7 +17,12 @@ packages = [
     "ffmpeg",
     "7zip",
     "poppler-utils",
-    "imagemagick"
+    "imagemagick",
+    "libconfig9",
+    "libev4",
+    "libpcre3",
+    "libxcb-composite0",
+    "libxcb-xinerama0"
 ]
 
 desktop_packages = {

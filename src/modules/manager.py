@@ -1,5 +1,5 @@
 from .linux_utils.commands import Install, linux
-from .linux_utils.packages import packages, desktop_packages
+from .linux_utils.packages import packages, desktop_packages, terminal_packages
 import os
 from .external_packages import kittyInstall, installNvim
 from .commonconstants import HOME, PWD
@@ -59,7 +59,7 @@ class Manager:
     
     def __terminal(self):
         if self.config.terminal == "gnome-terminal":
-            Install.install(self.config.terminalPackages['gnome-terminal'])
+            Install.install(terminal_packages['gnome-terminal'])
         if self.config.terminal == "kitty":
             kittyInstall()
 
